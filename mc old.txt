@@ -1,0 +1,456 @@
+
+\section{离散时间半马尔科夫过程}
+考虑有限状态离散时间随机过程$\{X_n|n=0,1,2,...,N$\}。状态空间$\Omega=\{0,1,...,N\}$。假设当过程进入状态$i$，它会以概率$p_{ij}$选择状态$j$作为下一个状态。
+\begin{center}
+$p_{ij}\ge0	 \quad i,j\in\Omega$
+
+$ \sum p_{ij}=1$
+\end{center}
+
+取$T_0,T_1,...,T_N$为非负实数，代表状态转移的时间$0=T_0 \le T_1 \le T_2 \le ... \le T_N$。定义时间间隔$T_{i+1}-T_i=H_i$为状态$i \in S$上的停留时间。$H_i$可以如下进行解释。选择
+了$j$之后，随机过程在转移之前在一状态上的停留时间为$H_{ij}$，$H_{ij}$是一个取值正整数的随机变量，且$ p_{H_{ij}}(m)=P[H_{ij}=m],m=1,2,... $  。
+假设对所有的$i$和$j$，$E[H_{ij} < \infty]$并且$p_{H_{ij}}(0)=0$，这意味着系统在作出转移之前至少停留一个单位时间。如果我们仅仅关注转移而忽略转移之间的停留时间的话，我们将会得到一个马尔科夫过程。然而，当我们加入停留时间之后，该随机过程将不再满足Chapman-Kolmogonov方程。我们称这个随机过程为嵌入马尔科夫过程。因此，状态i上停留时间$H_i$的概率分布为
+\begin{center}
+$p_{H_{i}}(m)=\sum p_{ij}p_{H_{ij}}(m) \quad m=1,2,...$
+\end{center}
+状态i上停留时间的期望为
+\begin{center}
+$E[H_{i}] = \sum p_{ij}E[H_{ij}] \quad i=1,2,...,N$
+\end{center}
+该二维随机过程$\{(X_n,Y_n)|n=0,1,...,N\}$叫做离散时间半马尔科夫过程，如果满足下列条件：
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=3.5in]{f61}
+\caption{离散时间半马尔可夫过程的状态转移图}\label{fig:1}
+\end{figure}
+
+a. $\{X_n|n=0,1,...,N\}$是一个马尔科夫链，这被称作嵌入马尔科夫链
+
+b. $P[X_{n+1}=j,T_{n+1}-T_n \le m |X_0,X_1,...,X_n=i;T_0,...,T_n]=P[X_{n+1}=j,H_n \le m|X_n=j],m=0,1,..., \quad H_n=T_{n+1}-T_n$
+
+我们可以用图来代表一个离散时间马尔科夫过程，这是一个离散时间半马尔科夫过程的状态转移图，它的嵌入马尔科夫过程是一个共有三个状态的马尔科夫链。转移弧包含转移概率和条件停留时间的概率分布。
+\subsection{状态概率}
+用$\phi_{ij}(n)$来代表已知过程在$0$时刻处于状态$i$，$n$时刻时位于状态$j$的概率，通常被称为状态$i$到状态$j$的转移概率函数。我们考虑$\phi_{ij}(n)$的两种取值情况：
+
+a. 对于$i\ne j$，过程在时刻$m$转移到某个状态$k$，并在剩余的$n-m$时间内转移到状态$j$。这一事件的概率为：
+\begin{center}
+$\phi_{ij}(n)=\sum p_{ik}\sum p_{H_{ik}}(m)\phi_{kj}(n-m) \quad i \ne j$
+\end{center}
+b. 对于$i=j$，我们有一种额外的概率，即在感兴趣的时间段之内从未离开状态$i$。这一额外的概率为：
+\begin{center}
+$P[H_i>n]=1-P[H_i \le n]=1-F_{H_i}(n)$ 
+\end{center}
+由于从未离开状态$i$和离开$i$状态到达某个$k$状态是互斥的，所以有：
+\begin{center}
+$\phi_{ij}(n)=1-F_{H_i}(n)+\sum p_{ik}\sum p_{H_{ik}}(m)\phi_{kj}(n-m) \quad i \ne j$
+\end{center}
+如果定义
+$$\delta_{ij}=
+\begin{cases}
+1 \quad i=j  \\
+0 \quad i \ne j
+\end{cases}$$
+过程在时刻$m$转移到某个状态$k$，并在剩余的$n-m$时间内转移到状态$j$。这一事件的概率为：
+\begin{center}
+$
+\begin{aligned}
+\phi_{ij}(n)=\delta_{ij}[1-F_{H_i}(n)]+\sum p_{ik}\sum p_{H_{ik}}(m)\phi_{kj}(n-m) \\=\delta_{ij}[1-F_{H_i}(n)]+\sum p_{ik}p_{H_{ik}}(n)*\phi_{kj}(n) 
+\end{aligned}
+$
+\end{center}
+其中$=\phi_{ij}(0)=delta_{ij}$，$*$为卷积符号。上述等式被称为半马尔可夫过程的后向$Chapman-Kolmogorov$等式用$P_H(n)$来代表$p_{H_{ik}}(n)$组成的矩阵，
+让$P$代表嵌入马尔科夫过程的状态转移矩阵。定义离散时间和矩阵$C(n)$为：
+\begin{center}
+$C(n)=P\bullet P_H(n)$
+\end{center}
+
+这就是说，$C(n)$的分量为$c_{ij}(n)=p_{ij}p_{H_{ij}}(n)$。因此，转移概率函数变成了：
+\begin{center}
+$\phi_{ij}(n)=\delta_{ij}[1-F_{H_i}(n)]+\sum c_{ik}(n)*\phi_{kj}(n) $
+\end{center}
+对上式两边同时取$z$变换得到：
+对上式两边同时取$z$变换得到：
+\begin{center}
+$\phi_{ij}(z)=\frac{\delta_{ij}[1-G_{H_i}(z)]}{1-z}+\sum c_{ik}(z)\phi_{kj}(z) $
+\end{center}
+其中$G_{H_i}(z)$是$p_{H_i}(n)$的$z$变换形式。用$D(z)$代表$N\times N$的对角方阵，其中第$i$个对角元素为${1-G_{H_i}(z)}/(1-z)$。于是，矩阵形式的等式就变成了：
+\begin{center}
+$\Phi(z)=D(z)+C(z)\Phi(z) $
+\end{center}
+如果我们定义
+\begin{center}
+$$\phi_{ij}=\lim_{n\to \infty} \phi_{ij}(n) $$
+\end{center}
+由$Howard(1971b)$可以得到：
+
+$\phi_{ij}=\frac{\pi_jE[H_j]}{\sum \pi_kE[H_k]}$
+
+其中$\pi_j$是嵌入马尔科夫链的极限状态概率。可以看到等式右边是和$i$独立的，所以我们可以定义半马尔可夫过程的极限分布概率为：
+
+$\phi_j=\frac{\pi_jE[H_j]}{\sum \pi_kE[H_k]}$
+
+极限状态概率分布也叫做占有率分布，因为 $\phi_j$可以显示过程长期的停留在状态$j$的比例。
+\subsection{首达时间}
+用$T_{ij}$表示第一次从状态$i$转移到状态$j$的时刻，即
+\begin{center}
+$T_{ij}=min\{n>0|X_n=j,X_0=i\}$
+\end{center}
+令$m_{ij}=E[T_{ij}]$，即$m_{ij}$是第一次从状态$i$转移到状态$j$的时刻平均值。我们可以如下迭代地得到$M_{ij}$，因为在状态$i$的平均停留时间是$E[H_i]$,如果已知一个过程从状态$i$开始，它在以概率$p_{ik}$转移到状态$k$之前停留的平均时间为$E[H_i]$，然后从状态$k$经过平均时间$m_{ij}$到达状态$j$。即
+\begin{center}
+$m_{ij}=E[H_i]+\sum p_{ik}m_{kj}$
+\end{center}
+当$j=i$时，即得到平均回转时间。特别地，因为嵌入马尔科夫链的极限状态概率分布存在，它们满足等式
+\begin{center}
+$\pi_i=\sum \pi_kp_{ki}$
+\end{center}
+
+\large 待补充
+
+从这些结果我们可以得到如下结论：
+
+a.两个状态$i$和$j$如果在嵌入马尔科夫链中是连通的，则它们在半马尔可夫过程中是连通的。对这样的两个状态，$P[T_{ij}<\infty]\times P[T_ji<\infty]>0$
+
+b.如果在嵌入马尔科夫链中，状态$i$是常返状态，它在半马尔可夫过程中也是常返状态。对于这样的状态$P[T_{ii}<\infty]>0$
+
+c.如果在嵌入马尔科夫链中，状态$i$是瞬时状态，它在半马尔可夫过程中也是瞬时状态。对于这样的状态$P[T_{ii}<\infty]=0$
+
+例1：
+
+考虑一个人在3个地点（教学楼，宿舍，图书馆）之间进行移动，他的移动模型可以用一个离散时间的半马尔可夫过程来进行建模。分别设3个地点为$p_1=1,p_2=2,p_3=3$。转移矩阵为P，如图所示。在一个地点停留时间的分布取决于当前停留的地点与接下来将要到达的地点。设当前停留的地点为a(n),下一地点为a(n+1),停留时间的概率分布符合参数为$\lambda=\frac{p_{a(n+1)}}{p_{a(n)}}$的泊松分布。已知在$t=0$时刻，该人处于地点1。
+\begin{center}
+$P=
+\left[
+\begin{array}{c c c}
+0 \quad 0.5 \quad 0.5\\
+0.9 \quad  0 \quad  0.1\\
+0.4 \quad  0.6 \quad  0
+\end{array}
+\right]$
+\end{center}
+
+a. 求该人首次离开地点1的时刻的概率分布函数和期望
+
+b. 求在时刻3该人位于状态2的概率，即求$\phi_{12}(3)$的值
+
+c. 求该过程的占有率分布
+
+解： a.设首次离开地点1的时刻为T,$T=n$的概率为：
+
+\begin{center}
+$\begin{aligned}
+P(T=n)=p_{12}P(X=n,\lambda=2)+p_{13}P(X=n,\lambda=3)\\
+=0.5*\frac{2^n}{n!}e^{-2}+0.5*\frac{3^n}{n!}e^{-3}
+\end{aligned}$
+\end{center}
+
+\begin{center}
+$\begin{aligned}
+E(H_i)=\sum n*P(T=n)\\
+=\sum np_{12}P(X=n,\lambda=2)+np_{13}P(X=n,\lambda=3)\\
+=p_{12}\sum nP(X=n,\lambda=2)+p_{13}\sum nP(X=n,\lambda=3)\\
+=p_{12}E(P.P(X,\lambda=2))+p_{13}E(P.P(X,\lambda=3))\\
+=0.5*2+0.5*3\\
+=2.5
+\end{aligned}$
+\end{center}
+
+b. $\phi_{12}(3)=$
+
+c. 由于状态空间有限，极限分布存在且等于平稳分布。$\pi=P\pi$,解得$\pi=(1/3,1/3,1/3)^T$
+由a.的结论可以类似地求出$E(H_2)=0.6,E(H_3)=\frac{8}{15}$
+
+\begin{center}
+$
+\phi_1=\frac{\pi_1E(H_1)}{\sum \pi_kE(H_k)}=\frac{75}{109}
+$
+
+同理可得
+
+$\begin{aligned}\phi_2=\frac{18}{109}\\
+\phi_2=\frac{16}{109}\end{aligned}
+$
+
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{连续时间半马尔科夫过程}
+考虑有限状态空间$\Omega={0,1,...,N}$中的连续时间随机过程${X(t),t\le 0}$。假设在$t=0$时刻，过称处于状态$i$，它将以$p_{ij}$的概率选择状态$j$作为下一个状态，其中：
+\begin{center}
+$\begin{aligned}
+p_{ij}\le 0 \quad i\in \Omega,j\in \Omega \\
+\sum p_{ij}=1
+\end{aligned}$
+\end{center}
+已知状态$i$将会转移到状态$j$，过程在状态$i$所停留的时间$H_{ij}$存在分布函数$f_{H_{ij}}(t),t\le 0$。随机变量$H_{ij}$叫做由状态$i$转移到状态$j$的停留时间，并且假定$E[H_{ij}<\infty$成立。像离散时间的情况一样，如果我们仅关注转移而忽略转移之间的间隔时间的话，我们将会得到一个马尔科夫过程。然而，当我们加入停留时间之后，这个过程将不再满足$Chapman_kolmogorov$等式，除非停留时间是指数分布。我们称决定状态之间转移的过程为嵌入马尔科夫过程。转移之前停留在状态$i$的时间称为等待时间，它的概率分布函数为：
+\begin{center}
+$f_{H_i}(t)=\sum p_{ij}f_{H_{ij}}(t) \quad t\le0$
+\end{center}
+因此，状态$i$的平均等待时间为
+\begin{center}
+$E[H_i]=\sum p_{ij}E[H_{ij}] \quad i=1,2,...,N$
+\end{center}
+二维随机过程${(X_n,T_n)|n=0,1,...,N}$就叫做连续时间半马尔可夫过程，如果符合下列条件：
+
+a.${X_n|n=0,1,...,N}$是一个马尔科夫链，是嵌入马尔科夫链
+
+b.$P[X_{n+1}=j,T_{n+1}-T_n\le t|X_0,...,X_n=i;T_0,...,T_n]=P[X_{n+1}=j,H_n\le t|X_n=i],t\ge 0$，其中$H_n=T_{n+1}-T_n$
+
+与离散时间情况类似，我们可以通过图来代表连续时间版马尔科夫过程，该图为状态空间包含三个状态的嵌入马尔科夫过程为马尔科夫链的半马尔可夫过程。在这种情况下，转移弧包含转移概率和停留时间的条件分布函数。
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=3.5in]{f62}
+\caption{连续时间半马尔可夫过程的状态转移图}\label{fig:2}
+\end{figure}
+
+
+我们可以看到连续时间马尔科夫过程和连续时间半马尔可夫过程的区别。在连续时间马尔科夫过程中，停留时间是指数分布的，并且仅仅取决于现在的状态。在连续时间版马尔科夫过程中，停留时间可以是一个任意的分布，并且依赖于现在的状态和将要到达的状态。
+如果$i\ne j$,从状态$i$到状态$j$的转移为真实的转移，并且当$i=j$时，该转移叫做虚拟的转移。半马尔可夫过程的一步转移概率$Q_{ij}(t)$定义为
+\begin{center}
+$Q_{ij}=P[X_{n+1}=j,H_n\le t|X_n=i] \quad t\ge 0$
+\end{center}
+且与$n$独立。因此,$Q_{ij}(t)$就是给定过程现在处于状态$i$，并且在状态$i$的停留时间不超过$t$且下一步转移到状态$j$的概率。从这里我们可以获得嵌入马尔科夫链的转移概率$p_{ij}$和在状态$i$停留时间的累计分布函数$F_{H_i}(t)$，如下：
+\begin{center}
+$
+\begin{aligned}
+p_{ij}=P[X_{n+1}=j|X_n=i]=lim_{t\to \infty}P[X_{n+1}=j,H_n\le t|X_n=i] \\ 
+=Q_{ij}(\infty) \\ 
+F_{H_i}(t)=P[H_i\le t]=P[H_n\le t|X_n=i]=\sum P[X_{n+1}=j,H_n\le t|X_n = i] \\
+=\sum Q_{ij}(t)
+\end{aligned}$
+\end{center}
+
+定义$Q_{ij}$的矩阵为$Q=[Q_{ij}(t)]$。然而，这个矩阵与强度矩阵或者连续时间马尔科夫链的无穷小产生器是不同的。惯例是基于历史的，并且这两个在历史上是有不同定义的。
+
+$
+\begin{aligned}
+P[X_{n+1}=j,H_n\le t|X_n=i]=Q_{ij}(t) \\
+=P[H_n\le t|X_n=i,X_{n+1}=j]P[X_{n+1}=j|X_n=i]
+\end{aligned}
+$
+
+因为$P[X_{n+1}=j|X_n=i]=p_{ij}$，如果我们标记$P[H_n \le t|X_n=i,X_{n+1}=j]=G_{ij}(t)$，我们将得到
+\begin{center}
+$Q_{ij}(t)=p_{ij}G_{ij}(t)$
+\end{center}
+
+通过连续时间半马尔可夫过程可以建模多个系统。这包括所有能够被连续时间马尔科夫过程建模的系统，因为从之前的讨论中我们发现连续时间马尔科夫过程是一个半马尔可夫过程，而且：
+
+\begin{center}
+$f_{h_{ij}}(t)=\lambda_{ij}e^(-\lambda_{ij}t) \quad t \ge 0,1 \le i,j\le N$
+\end{center}
+
+连续时间半马尔可夫过程主要的应用领域是在可靠性和可达性研究上。比如说，考虑一个经常经历失败和需要维修的系统。假设当系统运行直到达到失败的时间符合随机分布。一旦失败之后，直到被维修的时间符合另外一个随机分布。如果我们标记良好状态为状态$1$，标记失败状态为状态$2$，那么这个系统就可以用转移概率矩阵为如下的嵌入马尔科夫链的半马尔可夫过程来表示：
+$
+P=\left[ \begin{array}{c c}
+ 0\quad 1\\
+ 1\quad 0  
+\end{array}
+\right]
+$
+
+更多复杂的失败模型可以类似地用半马尔可夫过程来定义。
+
+在一个$M/G/1$排队系统中，如果我们定义$X(t)$为时刻$t$系统中的顾客的数量，过程${X(t),t \ge 0}$不是半马尔可夫过程，因为一次转移后系统的状态不仅依赖于$X(t)$而且依赖于正在接受服务的顾客已经接受服务的时间长度。如果我们定义转移仅发生在顾客完成服务的时刻，这个过程就变成了一个半马尔可夫过程。在我们对于$M/G/1$队列的研究中，我们考虑过程${N(t),t \ge 0}$，$t$时刻之前顾客最后一次完成服务的时刻系统中剩余的顾客为$n$个，$N(t)=n$。这是一个半马尔科夫链。
+
+
+
+\subsection{状态概率}
+
+用$\phi_{ij}(t)$来代表已知过程在0时刻处于状态i，n时刻时位于状态j的概率，通常被称为状态i到状态j的转移概率函数。正如之前提到的，$\phi_{ij}(t)$被称为从状态i到状态j的转移概率函数。和离散时间的状况相同，我们考虑两种情况：
+
+a. 对于$i\ne j$，过程在时刻u转移到某个状态k，并在剩余的t-u时间后到达状态j。这一事件的概率为：
+\begin{center}
+$\phi_{ij}(t)=\sum p_{ik}\int f_{H_{ik}}(u)\phi_{kj}(t-u)du  \quad i \ne j $
+\end{center}
+
+b.对于$i=j$，我们有一种额外的概率，即在感兴趣的时间段之内从未离开状态i。这一额外事件的概率为：
+
+\begin{center}
+$P[H_i>t]=1-P[H_i\le t]=1-F_{H_i}(t)  $
+\end{center}
+
+由于从未离开状态i和离开i状态到达某个k状态是互斥的，所以有：
+\begin{center}
+$\phi_{ii}(t)=1-F_{H_i}(t)+\sum p_{ik}\int f_{H_{ik}}(u)\phi_{ki}(t-u)du$ 
+\end{center}
+
+于是，对于$i,j\in S$和$t \ge 0$，我们可以得到：
+\begin{center}
+$\phi_{ij}(t)=\delta{1-F_{H_i}(t)}+\sum p_{ik}\int f_{H_{ik}}(u)\phi_{kj}(t-u)du$ 
+\end{center}
+其中$\phi_{ij}(0) = \delta_{ij}$。因为积分是一个卷积的形式，我们可以写成：
+\begin{center}
+$\begin{aligned}
+\phi_{ij}(t)=\delta_{ij}{1-F_{H_i}(t)}+\sum p_{ik}f_{H_{ik}}(t)*\phi_{kj}(t) \\
+=\delta_{ij}{1-F_{H_i}(t)}+\sum c_{ik}(t)*\phi_{kj}(t)
+\end{aligned}
+$ 
+\end{center}
+
+其中，与离散时间的情况相同，我们定义连续时间的核矩阵为
+\begin{center}
+$C(t)=[c_{ij}(t)]=P\bullet f_{H_t}=[p_{ij}f_{H_{ij}}(t)]$
+\end{center}
+
+我们定义$\phi_{ij}(s)$为$\phi_{ij}(t)$的s变换，$c_{ij}(s)$为$c_{ij}(t)$的s变换，并且注明$F_{H_i}(t)$的s变换为$M_{H_i}(s)/s$，其中$M_{H_i}(s)$是$f_{H_i}(t)$的s变换。因此，对上面等式两边进行s变换我们可以得到：
+\begin{center}
+$\begin{aligned}
+\phi_{ij}(s)=\frac{\delta_{ij}}{s}\{1-M_{H_i}(s)\}+\sum c_{ik}\phi_{kj}(s) \\
+=\frac{\delta_{ij}}{s}\{1-\sum p_{ik}M_{H_{ik}}(s)\}+\sum c_{ik}(s)\phi_{kj}(s)
+\end{aligned}
+$ 
+\end{center}
+
+最后，如果$D(s)$是$N\times N$的对角矩阵，且对角元素为${1-M_{H_i}(s)}/s$，矩阵形式的等式就变成了：
+
+\begin{center}
+$\Phi(s)=D(s)+C(s)\Phi(s)$
+\end{center}
+
+如果我们定义
+
+\begin{center}
+$$\phi_{ij}=\lim_{t \to \infty}\phi_{ij}(t)$$
+\end{center}
+
+那么根据Howard（1971b）
+\begin{center}
+$$\phi_{ij}=\frac{\pi_jE[H_j]}{\sum \pi_kE[H_k]}$$
+\end{center}
+
+其中$\pi_j$是嵌入马尔科夫链的极限概率分布。因为等式右边是与状态i独立的，我们能够得到半马尔科夫链的极限分布为：
+
+\begin{center}
+$\phi_{j}=\frac{\pi_jE[H_j]}{\sum \pi_kE[H_k]}$
+\end{center}
+
+正如以前所说的，极限状态概率也叫做占有率分布，因为$\phi_j$能够反映长期以来过程处于状态j的时间的比例。
+
+
+
+\subsection{首达时间}
+用$T_{ij}$来表示首次从状态i转移到状态j的时刻。
+
+\begin{center}
+$T_{ij}=min\{t>0|X(t)=j,X(0)=i\}$
+\end{center}
+
+令$m_{ij}=E[T_{ij}]$，即$m_{ij}$是第一次从状态$i$转移到状态$j$的时刻平均值。在离散的情况下，我们有
+
+\begin{center}
+$m_{ij}=E[H_i]+\sum p_{ik}m_{kj}$
+\end{center}
+
+最后用同样的方法，我们可以获得平均回转时间为
+
+\begin{center}
+$m_{jj}=\frac{\sum \pi_iE[H_i]}{\pi_j} \quad j=1,2,...,N$
+\end{center}
+
+
+\subsection{在半马尔科夫视角下分析学过的随机过程}
+
+在连续时间马尔科夫过程的分析当中，我们引进了转移率矩阵Q。为了解释$Q=(q_{ij})$的概率意义，令
+
+\begin{center}
+$\tau_1=inf\{t:t>0,X(t)\ne X(0)\}$
+\end{center}
+
+$\tau_1$表示都留在初始状态的时间（或者首次离开初始状态的时刻）。$\tau_1$的概率特性与$Q=(q_{ij})$的关系如下：
+
+\begin{center}
+$P(\tau_1>t|X(0)=i)=e^{-q_it}$
+\end{center}
+
+如果关心状态转移的目的状态，有：
+
+\begin{center}
+$P(\tau_1\le t,X(\tau_1)=j|X(0)=i)=\frac{q_{ij}}{q_i}[1-e^{(-q_it)}]$
+\end{center}
+
+
+\begin{center}
+$P(X(\tau_1)=j|X(0)=i)=\frac{q_{ij}}{q_i}$
+\end{center}
+
+观察公式，我们可以看到连续参数的马尔科夫过程的嵌入马尔科夫链为
+
+\begin{center}
+$p_{ij}=P[X_{n+1}=j|X_n=i]=
+\left \{
+\begin{array}{c c}
+ \frac{q_{ij}}{q_i}\quad i\ne j \\
+ 0\quad i=j  
+\end{array}
+\right.$
+\end{center}
+
+停留时间分布$G_{ij}$为：
+
+\begin{center}
+$G_{ij}(t)=1-e^{(-q_it)}$
+\end{center}
+
+因此，可以看到连续参数的马尔科夫过程为半马尔可夫过程的一种特殊情况。其中，$G_{ij}$为与转移的目标状态$j$独立，而与当前状态$i$有关的指数分布函数。
+
+而泊松过程可以看做是一个纯生过程的连续时间马尔科夫过程，即可以看做一个嵌入马尔科夫链为
+
+\begin{center}
+$p_{ij}=P[X_{n+1}=j|X_n=i]=
+\left \{
+\begin{array}{c c}
+ 1\quad j=i+1 \\
+ 0\quad otherwise  
+\end{array}
+\right.$
+\end{center}
+
+停留时间分布$G_{ij}$为：$G_{ij}(t)=1-e^{(-\lambda t)}$的半马尔可夫过程，其中$\lambda$为泊松过程的参数。
+
+更新过程除了连续时间分布，如指数分布之外，也可以将离散分布的更新时间函数放在半马尔可夫过程的框架下进行分析。
+
+
+\begin{center}
+$p_{ij}=P[X_{n+1}=j|X_n=i]=
+\left \{
+\begin{array}{c c}
+ \frac{q_{ij}}{q_i}\quad i\ne j \\
+ 0\quad i=j  
+\end{array}
+\right.$
+\end{center}
+
+停留时间分布$G_{ij}$为与i,j相关的二项分布：
+
+\begin{center}
+$G_{ij}(t)=(\frac{i}{i+j})^{k-1}\frac{j}{i+j}$
+\end{center}
+
+模拟！！
+
+
+
+例2：

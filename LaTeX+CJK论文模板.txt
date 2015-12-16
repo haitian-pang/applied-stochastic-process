@@ -1,0 +1,342 @@
+f8c
+Ò»¸ö¼òµ¥µÄLaTeX+CJKÂÛÎÄÄ£°å
+×÷Õß£ºÓÚ½­Éú£¨±±¾©´óÑ§¼ÆËã»úÏµ£©
+
+ÉùÃ÷£ºÔÊĞíÎ´¾­×÷ÕßµÄÍ¬Òâ½øĞĞ·ÇÉÌÒµÄ¿µÄµÄ×ªÔØ£¬µ«±ØĞë±£³ÖÔ­ÎÄµÄÍêÕûĞÔ¡£
+
+
+--------------------------------------------------------------------------------
+
+ÖĞÎÄTeXÊ¹ÓÃÕßÒ»°ãµÄÑ¡ÔñÊÇÔÚWindowsÏÂÓÃCTeX£¬ÔÚUNIXÏÂÓÃteTeX+laTeX-CJK¡£ CJKÊÇµÂ¹úÈË Werner Lemberg ÑĞ·¢µÄ£¬ºÍ¼¸ºõËùÓĞµÄºê°ü¶¼ÄÜ¡°ºÍÆ½Ïà´¦¡±¡£ÏÂÃæ½éÉÜÒ»¸ö¼òµ¥µÄLaTeX+CJKÂÛÎÄÄ£°å¡£
+
+Î¨Ò»ÒªËµÃ÷µÄÊÇ£¬ÃüÁî \CJKcaption{GB} ÊÇÊµÏÖÕÂ½Ú±êÌâµÄÖĞÎÄ»¯£¬µ«ÊÇÔÚ FreeBSDÏÂÓÃteTeX±àÒëÍ¨²»¹ı¡£¸ĞĞ»aloftµÄ¹±Ï×£¬ËûĞŞ¸ÄµÄGB.cpxÕæÕıÊµÏÖÁËÕÂ½Ú±êÌâµÄÖĞÎÄ»¯£¬Ê¹µÃ\CJKcaption{GB}ÔÚUNIXºÍWindowsÏÂ¶¼Ã»ÓĞÎÊÌâ¡£ UNIXÓÃ»§¿ÉÒÔÓÃaloftµÄGB.cpxÌæ»»/usr/local/share/texmf/tex/latex/CJK/GB/GB.cpxÎÄ¼ş¡£
+
+´ÓÒ»¸ö¼òµ¥µÄLaTeX+CJKÂÛÎÄÄ£°å³ö·¢£¬Äã»á·¢ÏÖÓÃTeXĞ´×÷ÊÇÒ»¼ş·Ç³£ÁîÈËÓäÔÃµÄÊÂÇé¡£ÒÔÏÂÄ£°åÔÚFreeBSDÏÂÓÃteTeX±àÒëÍ¨¹ı£¬ÔÚWindowsÏÂÓÃCTeXÒ²±àÒëÍ¨¹ı¡£»¶Ó­²âÊÔºÍÊ¹ÓÃ£¬ÈÎºÎ·½ÃæµÄ¸Ä½ø¶¼ÊÇ¹ÄÀøµÄ¡£Äã¿ÉÒÔ¶ÔÕÕ±¾Ä£°åÉú³ÉµÄpdfÎÄ¼ş¡£
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Ä¿µÄ : LaTeX+CJKÖĞÎÄÂÛÎÄÄ£°å  %%
+%% ÎÄ¼ş : Template4CJK.tex       %%
+%% ÈÕÆÚ : 10-01-2008             %%
+%% ÕûÀí : ÓÚ½­Éú                 %%
+%% ÏµÍ³ : FreeBSD+teTeX          %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\iffalse                             % ¿é×¢ÊÍ
+Èç¹ûÒª×¢ÊÍÒ»¿éÎÄ×Ö£¬ÓÃ\iffalse ... \fi ½ç¶¨×¡Òª
+×¢ÊÍµÄÎÄ×Ö¡£ÌØ±ğÌáĞÑ£ºÒÔÏÂÉèÖÃµÄ´ÎĞò²»ÄÜÂÒ£¬·ñÔò
+»áÒı·¢³åÍ»£¬Ó°Ïìµ½±àÒëÊÇ·ñ³É¹¦¡£
+\fi
+\documentclass[a4paper,11pt,         % A4Ö½
+               twoside,              % Ë«Ãæ
+%              openany               % ĞÂÕÂ½ÚÔÚÅ¼ÊıÒ³¿ªÊ¼
+               ]{article}
+
+%%%%%%%%%% °æÃæ¿ØÖÆ %%%%%%%%%%
+\usepackage{indentfirst}             % Ê×ĞĞËõ½ø
+\iffalse
+\usepackage[%paperwidth=18.4cm, paperheight= 26cm,
+            body={14.6true cm,22true cm},
+            twosideshift=0 pt,
+            %headheight=1.0true cm
+            ]{geometry}
+\fi
+\usepackage[perpage,symbol]{footmisc}% ½Å×¢¿ØÖÆ
+\usepackage[sf]{titlesec}            % ¿ØÖÆ±êÌâ
+\usepackage{titletoc}                % ¿ØÖÆÄ¿Â¼
+\usepackage{fancyhdr}                % Ò³Ã¼Ò³½Å
+\usepackage{type1cm}                 % ¿ØÖÆ×ÖÌå´óĞ¡
+\usepackage{indentfirst}             % Ê×ĞĞËõ½ø
+\usepackage{makeidx}                 % ½¨Á¢Ë÷Òı
+\usepackage{textcomp}                % Ç§·ÖºÅµÈÌØÊâ·ûºÅ
+\usepackage{layouts}                 % ´òÓ¡µ±Ç°Ò³Ãæ¸ñÊ½
+\usepackage{bbding}                  % Ò»Ğ©ÌØÊâ·ûºÅ
+\usepackage{cite}                    % Ö§³ÖÒıÓÃ
+\usepackage{color,xcolor}            % Ö§³Ö²ÊÉ«ÎÄ±¾¡¢µ×É«¡¢ÎÄ±¾¿òµÈ
+\usepackage{listings}                % Õ³ÌùÔ´´úÂë
+\lstloadlanguages{}                  % ËùÒªÕ³Ìù´úÂëµÄ±à³ÌÓïÑÔ
+\lstset{language=,tabsize=4, keepspaces=true,
+    xleftmargin=2em,xrightmargin=2em, aboveskip=1em,
+    backgroundcolor=\color{lightgray},    % ¶¨Òå±³¾°ÑÕÉ«
+    frame=none,                      % ±íÊ¾²»Òª±ß¿ò
+    keywordstyle=\color{blue}\bfseries,
+    breakindent=22pt,
+    numbers=left,stepnumber=1,numberstyle=\tiny,
+    basicstyle=\footnotesize,
+    showspaces=false,
+    flexiblecolumns=true,
+    breaklines=true, breakautoindent=true,breakindent=4em,
+    escapeinside={/*@}{@*/}
+}
+
+%%%%%%%%%% ×ÖÌåÖ§³Ö %%%%%%%%%%%%
+%\usepackage{ccmap}                  % Ê¹pdfLatexÉú³ÉµÄÎÄ¼şÖ§³Ö¸´ÖÆµÈ
+\usepackage{CJK,CJKnumb,CJKulem}     % ÖĞÎÄÖ§³Ö
+\usepackage{times}     % °üÀ¨ Times Roman + Helvetica + Courier
+%\usepackage{palatino} % °üÀ¨ Palatino + Helvetica + Courier
+%\usepackage{newcent}  % °üÀ¨ New Century Schoolbook + Avant Garde + Courier
+%\usepackage{bookman}  % °üÀ¨ Bookman + Avant Garde + Courier
+
+%%%%%%%%%% ÊıÑ§·ûºÅ¹«Ê½ %%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amsmath}                 % AMS LaTeXºê°ü
+\usepackage{amssymb}                 % ÓÃÀ´ÅÅ°æÆ¯ÁÁµÄÊıÑ§¹«Ê½
+\usepackage{amsbsy}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}                % Ó¢ÎÄ»¨Ìå×ÖÌå
+\usepackage{bm}                      % ÊıÑ§¹«Ê½ÖĞµÄºÚĞ±Ìå
+\usepackage{relsize}                 % µ÷Õû¹«Ê½×ÖÌå´óĞ¡£
+fc1
+º\mathsmaller, \mathlarger
+\usepackage{caption2}                % ¸¡¶¯Í¼ĞÎºÍ±í¸ñ±êÌâÑùÊ½
+
+%%%%%%%%%% Í¼ĞÎÖ§³Öºê°ü %%%%%%%%%%
+\ifx\pdfoutput\undefined             % ÓÃlatex»òpdflatex±àÒë
+  \usepackage[dvips]{graphicx}       % ½«eps¸ñÊ½µÄÍ¼Æ¬·ÅÔÚfiguresÄ¿Â¼ÏÂ
+\else                                % ÔÚsetup/format.texÖĞÓÃÒÔÏÂÃüÁî×¢Ã÷Â·¾¶£º
+  \usepackage[pdftex]{graphicx}      % \graphicspath{{figures/}}
+\fi
+%\usepackage{subfigure}
+\usepackage{epsfig}                  % Ö§³ÖepsÍ¼Ïñ
+%\usepackage{picinpar}               % Í¼±íºÍÎÄ×Ö»ìÅÅºê°ü
+%\usepackage[verbose]{wrapfig}       % Í¼±íºÍÎÄ×Ö»ìÅÅºê°ü
+%\usepackage{eso-pic}                % ÏòÎÄµµµÄ²¿·ÖÒ³¼Ón¸±Í¼ĞÎ, ¿ÉÊµÏÖË®Ó¡Ğ§¹û
+%\usepackage{eepic}                  % À©Õ¹µÄ»æÍ¼Ö§³Ö
+%\usepackage{curves}                 % »æÖÆ¸´ÔÓÇúÏß
+%\usepackage{texdraw}                % ÔöÇ¿µÄ»æÍ¼¹¤¾ß
+%\usepackage{treedoc}                % Ê÷ĞÎÍ¼»æÖÆ
+%\usepackage{pictex}                 % ¿ÉÒÔ»­ÈÎÒâµÄÍ¼ĞÎ
+%\usepackage{hyperref}
+
+%%%%%%%%%% Ò»Ğ©¾àÀëÉèÖÃ %%%%%%%%%%%
+\setlength{\floatsep}{10pt plus 3pt minus 2pt}       % Í¼ĞÎÖ®¼ä»òÍ¼ĞÎÓëÕıÎÄÖ®¼äµÄ¾àÀë
+\setlength{\abovecaptionskip}{2pt plus 1pt minus 1pt}% Í¼ĞÎÖĞµÄÍ¼Óë±êÌâÖ®¼äµÄ¾àÀë
+\setlength{\belowcaptionskip}{3pt plus 1pt minus 2pt}% ±í¸ñÖĞµÄ±íÓë±êÌâÖ®¼äµÄ¾à
+
+%%%%%%%%%% Ö½ÕÅºÍÒ³ÃæµÄ´óĞ¡ %%%%%%%%%%
+%\paperwidth   20 true cm            % Ö½ÕÅ¿í
+%\paperheight  30 true cm            % Ö½ÕÅ¸ß
+%\textwidth    10 true cm            % ÕıÎÄ¿í
+%\textheight   20 true cm            % ÕıÎÄ¸ß
+%\headheight      14pt               % Ò³Ã¼¸ß
+%\headsep         16pt               % Ò³Ã¼¾àÀë
+%\footskip        27pt               % Ò³½Å¾àÀë
+%\marginparsep    10pt               % ±ß×¢Çø¾àÀë
+%\marginparwidth  100pt              % ±ß×¢Çø¿í
+\makeindex                           % Éú³ÉË÷Òı
+\pagestyle{fancy}                    % Ò³Ã¼Ò³½Å·ç¸ñ
+\fancyhf{}                           % Çå¿Õµ±Ç°Ò³Ã¼Ò³½ÅµÄÄ¬ÈÏÉèÖÃ
+
+%%%%%%%%%% µ¼ÈëÖĞÎÄ»·¾³ %%%%%%%%%%
+\AtBeginDocument{\begin{CJK*}{GBK}{song} % ²»¼ÆÖĞÎÄµÄ¿Õ¸ñ
+\CJKindent                           % Ê×ĞĞËõ½øÁ½¸öºº×Ö
+\sloppy\CJKspace                     % ÖĞÓ¢ÎÄ»ìÅÅµÄ¶ÏĞĞ
+\CJKtilde                            % ÖØĞÂ¶¨Òå~£¬ÓÃ~¸ô¿ªÖĞÓ¢ÎÄ
+\CJKcaption{GB}                      % ÕÂ½Ú±êÌâµÄÖĞÎÄ»¯
+}
+\AtEndDocument{\end{CJK*}}
+
+%%%%%%%%%% ÕıÎÄ %%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%% Ò»Ğ©ĞÂ¶¨Òå %%%%%%%%%%
+\newcommand{\song}{\CJKfamily{song}} % ËÎÌå
+\newcommand{\hei}{\CJKfamily{hei}}   % ºÚÌå
+\newcommand{\fs}{\CJKfamily{fs}}     % ·ÂËÎ
+\newcommand{\kai}{\CJKfamily{kai}}   % ¿¬Ìå
+
+%%%%%%%%%% ¶¨ÀíÀà»·¾³µÄ¶¨Òå %%%%%%%%%%
+%% ±ØĞëÔÚµ¼ÈëÖĞÎÄ»·¾³Ö®ºó
+\newtheorem{example}{Àı}             % ÕûÌå±àºÅ
+\newtheorem{algorithm}{Ëã·¨}
+\newtheorem{theorem}{¶¨Àí}[section]  % °´ section ±àºÅ
+\newtheorem{definition}{¶¨Òå}
+\newtheorem{axiom}{¹«Àí}
+\newtheorem{property}{ĞÔÖÊ}
+\newtheorem{proposition}{ÃüÌâ}
+\newtheorem{lemma}{ÒıÀí}
+\newtheorem{corollary}{ÍÆÂÛ}
+\newtheorem{remark}{×¢½â}
+\newtheorem{condition}{Ìõ¼ş}
+\newtheorem{conclusion}{½áÂÛ}
+\newtheorem{assumption}{¼ÙÉè}
+
+%%%%%%%%%% Ò»Ğ©ÖØ¶¨Òå %%%%%%%%%%
+%% ±ØĞëÔÚµ¼ÈëÖĞÎÄ»·¾³Ö®ºó
+\renewcommand{\contentsname}{Ä¿Â¼}     % ½«Contents¸ÄÎªÄ¿Â¼
+\renewcommand{\abstractname}{Õª\ \ Òª} % ½«Abstract¸ÄÎªÕªÒª
+\renewcommand{\refname}{²Î¿¼ÎÄÏ×}      % ½«References¸ÄÎª²Î¿¼ÎÄÏ×
+\renewcommand{\indexname}{Ë÷Òı}
+\renewcommand{\figurename}{Í¼}
+\renewcommand{\tablename}{±í}
+\renewcommand{\appendixname}{¸½Â¼}
+\renewcommand{\proofname}{\hei Ö¤Ã÷}
+\renewcommand{\algorithm}{\hei Ëã·¨}
+
+%%%%%%%%%% ÖØ¶¨Òå×ÖºÅÃüÁî %%%%%%%%%%
+\newcommand{\yihao}{\fontsize{26pt}{36pt}\selectfont}       % Ò»ºÅ, 1.4±¶ĞĞ¾à
+\newcommand{\erhao}{\fontsize{22pt}{28pt}\selectfont}       % ¶şºÅ, 1.25±¶ĞĞ¾à
+\newcommand{\xiaoer}{\fontsize{18pt}{18pt}\selectfont}      % Ğ¡¶ş, µ¥±¶ĞĞ¾à
+\newcommand{\sanhao}{\fontsize{16pt}{24pt}\selectfont}      % ÈıºÅ, 1.5±¶ĞĞ¾à
+\newcommand{\xiaosan}{\fontsize{15pt}{22pt}\selectfont}     % Ğ¡Èı, 1.5±¶ĞĞ¾à
+\newcommand{\sihao}{\fontsize{14pt}{21pt}\selectfont}       % ËÄºÅ, 1.5±¶ĞĞ¾à
+\newcommand{\b
+1037
+ansi}{\fontsize{13pt}{19.5pt}\selectfont}     % °ëËÄ, 1.5±¶ĞĞ¾à
+\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}      % Ğ¡ËÄ, 1.5±¶ĞĞ¾à
+\newcommand{\dawu}{\fontsize{11pt}{11pt}\selectfont}        % ´óÎå, µ¥±¶ĞĞ¾à
+\newcommand{\wuhao}{\fontsize{10.5pt}{10.5pt}\selectfont}   % ÎåºÅ, µ¥±¶ĞĞ¾à
+
+%%%%%%%%%% Ò³Ã¼ºÍÒ³½ÅµÄÉèÖÃ %%%%%%%%%%
+\lhead{Ò»¸ö~\LaTeX+CJK~µÄ¼òµ¥Ä£°å}
+\rhead{\TeX~°®ºÃÕß}
+\lfoot{ÓÃ~\LaTeX~Ğ´¿Æ¼¼ÂÛÎÄ}
+\rfoot{~\thepage~}
+
+%%%%%%%%%% ÂÛÎÄ±êÌâ¡¢×÷ÕßµÈ %%%%%%%%%%
+\title{ÓÃ~\LaTeX~Ğ´¿Æ¼¼ÂÛÎÄ            % ÂÛÎÄ±êÌâ
+      \thanks{ÕâÊÇÒ»¸öÎª³õÑ§ÕßĞ´µÄ~\LaTeX+CJK~ÂÛÎÄÄ£°å£¬Î´¾­×÷ÕßÔÊĞí¿ÉÒÔ
+      ËæÒâÏÂÔØÊ¹ÓÃ²¢ĞŞ¸Ä´«²¥£¬Ä¿µÄÊÇÈÃ¸ü¶àµÄÈËÑ¸ËÙÉÏÊÖÓÃ~\LaTeX~ÏµÍ³Ğ´×÷¡£}
+       }
+\author{ÓÚ½­Éú\\                     % ×÷Õß
+        ±±¾©´óÑ§¼ÆËã»úÏµ}
+\date{2008Äê10ÔÂ01ÈÕ}                % ÈÕÆÚ
+\maketitle                           % Éú³É±êÌâ
+\tableofcontents                     % ²åÈëÄ¿Â¼
+\thispagestyle{empty}                % Ê×Ò³ÎŞÒ³Ã¼Ò³½Å
+
+\begin{abstract}
+\noindent % ²»Ëõ½ø
+ÕâÊÇÒ»¸ö¼òµ¥µÄ~\LaTeX+CJK~µÄÄ£°å£¬Îª~\TeX~µÄ³õÑ§ÕßÌá¹©±ãÀûÉÏÊÖµÄ²ÎÕÕ¡£
+¸ÃÄ£°åÔÚFreeBSD+te\TeXÏÂ±àÒëÍ¨¹ı£¬ÊÊºÏÔÚUNIXÏÂ¹¤×÷µÄÅóÓÑ¡£
+´ÓÒ»¸ö¼òµ¥µÄÄ£°å³ö·¢£¬²»¶ÏµØÌáÉı¶Ô~\TeX~µÄÈÏÊ¶£¬ÅàÑøÁ¼ºÃµÄĞ´×÷·ç¸ñ¡£
+ÍøÉÏÓĞ´óÁ¿µÄ×ÊÁÏ£¬ÎÒÍÆ¼ö~\LaTeX~±à¼­²¿£ºhttp://zzg34b.w3.c361.com/index.htm£¬
+ÄÇÀïÄÜÕÒµ½¹úÄÚÍâĞí¶àÆÚ¿¯µÄÄ£°åºÍÒ»Ğ©¸ßĞ£²©/Ë¶Ê¿ÂÛÎÄµÄÄ£°å¡£×£Íæ¶ùµÃ¿ªĞÄ£¡
+\end{abstract}
+
+\PencilRightUp % Ò»Ğ©¿É°®µÄÍ¼±ê£¬ĞèÒªbbdingºê°üµÄÖ§³Ö
+¹«Ôª~1974~Äê£¬ACM~Í¼Áé½±ÊÚÓèÁË~Standford~´óÑ§½ÌÊÚ\index{Donald E. Knuth}~Donald E. Knuth~£¨¸ßµÂÄÉ£©£¬
+±íÕÃËûÔÚËã·¨ºÍ³ÌĞòÓïÑÔÉè¼ÆµÈ¶à·½Ãæ½Ü³öµÄ³É¾Í¡£ËûµÄ¾ŞÖø~The Art of Computer Programming~ÁîÈËÕğº³£¬
+¸ĞĞËÈ¤µÄ¶ÁÕß¿ÉÒÔ·ÃÎÊËûµÄÖ÷Ò³~http://www-cs-faculty.stanford.edu/\~{}knuth/index.html¡£
+ÁíÍâ£¬Knuth~µÄÍ»³ö¹±Ï×»¹°üÀ¨\index{\TeXÏµÍ³}~\TeX~ÏµÍ³£¬ºÁ²»¿äÕÅµØÆÀ¼Û£¬
+\TeX~¸ø¿Æ¼¼ÂÛÎÄµÄÅÅ°æ´øÀ´ÁËÒ»³¡¸ïÃü¡£
+%%%%%%%%%% section %%%%%%%%%%
+\section{±à¼­ÊıÑ§¹«Ê½}
+\indent   % »Ö¸´Ëõ½ø
+\TeX~ÓĞÖîÈçAMS\TeX¡¢\LaTeX~µÈºê¿â¡£ÔÚ~FreeBSD~ÏÂ£¬È±Ê¡µÄºê¿âÊÇ~te\TeX¡£
+Knuth~ÓÃ~\$~·ûºÅ½ç¶¨ÊıÑ§¹«Ê½£¬ÒâÎ¶×ÅÃ¿¸öºÃµÄ¹«Ê½¶¼ÊÇÎŞ¼ÛÖ®±¦¡£
+ÓĞÁË~\TeX~ÏµÍ³£¬ÊäÈëÊıÑ§¹«Ê½±äµÃ¼òµ¥Óä¿ì¡£Èç£¬
+\begin{theorem}[L\'{e}vy\index{L\'{e}vy~¶¨Àí}]
+Áî~$F(x),\varphi(t)$~·Ö±ğÎªËæ»ú±äÁ¿~$X$~µÄ·Ö²¼º¯ÊıºÍÌØÕ÷º¯Êı¡£
+¼Ù¶¨~$F(x)$~ÔÚ~$a+h$~ºÍ~$a-h (h>0)$~´¦Á¬Ğø£¬ÔòÓĞ
+\begin{eqnarray}
+  \label{Levy theorem}  % ·½³ÌµÄ±ê¼Ç¿ÉÒÔÊÇ×¨ÓĞÃû´Ê
+F(a+h)-F(a-h)&=&\lim_{T\rightarrow\infty} \frac{1}{\pi}\int^{T}_{-T} \frac{\sin ht}{t} e^{-ita} \varphi(t)dt
+\end{eqnarray}
+\end{theorem}
+\begin{proof}
+  ´ÓÂÔ¡£¸ĞĞËÈ¤µÄ¶ÁÕß¿ÉÒÔ²Î¿¼¡­¡­¡£
+\end{proof}
+L\'{e}vy~¶¨ÀíÔÚ·Ö²¼º¯ÊıºÍÌØÕ÷º¯ÊıÖ®¼ä´î½¨ÁËÒ»×ùÇÅÁº¡£ÓÉ¹«Ê½~(\ref{Levy theorem})~¿ÉµÃ
+\begin{eqnarray}
+  \label{DensityCharacteristic}   % ×Ô¶¨ÒåµÄ±ê¼Ç
+  f(x)&=&\frac{1}{2\pi}\int^{+\infty}_{-\infty} e^{-itx}\varphi(t)dt
+\end{eqnarray}
+\begin{proof}
+ÓÉ~(\ref{Levy theorem})~ºÍ~Lebesgue~¶¨Àí£¬ÎÒÃÇÓĞ
+\begin{eqnarray}
+  \frac{F(x+\Delta x)-F(x)}{\Delta x}&=&\frac{1}{2\pi} \int^{+\infty}_{-\infty}
+\frac{\sin(t\Delta x/2)}{t\Delta x/2} e^{-it(x+\Delta x/2)} \varphi(t) dt\nonumber\\
+  f(x)&=&\frac{1}{2\pi} \int^{+\infty}_{-\infty} \lim_{\Delta x\rightarrow 0}
+\frac{\sin(t\Delta x/2)}{t\Delta x/2} e^{-it(x+\Delta x/2)} \varphi(t) dt\nonumber\\
+  &=&\frac{1}{2\pi}\int^{+\infty}_{-\infty} e^{-itx}\varphi(t)dt\nonumber
+\end{eqnarray}
+ÎÒÃÇÖªµÀÌØÕ÷º¯ÊıµÄ¶¨ÒåÊÇ
+\begin{eqnarray}
+  \label{section1:characteristic}   % ±ê¼ÇÖĞ×¢Ã÷ÁËÕÂ½ÚºÅ
+  \varphi(t)&=& E(e^{itX})\nonumber\\
+            &=& \int^{+\infty}_{-\infty} e^{itx} f(x)dx
+\end{eqnarray}
+¶Ô±È~(\ref{DensityCharacteristic})~ºÍ~(\ref{section1:characteristic})~¿É¼û£¬
+ÃÜ¶Èº¯ÊıºÍÌØÕ÷º¯ÊıÖ®¼äµÄ¹ØÏµ·Ç³£ÇÉÃî¡£
+\end{proof}
+\HandRight ÔÚ~\TeX~»·¾³Àï£¬ÊıÑ§¹«Ê½µÄ±í´ïÊÇºÜ×ÔÈ»µÄ£¬¾ø´ó¶àÊıÃüÁî¾ÍÊÇÓ¢ÎÄµÄÊıÑ§
+×¨ÓĞÃû´Ê»òËüÃÇµÄËõĞ´£¬Èç¹ûÄãÒÔÇ°¶Á¹ıÓ¢ÎÄµÄÊıÑ§ÎÄÏ×£¬¼ÇÒäÕâĞ©ÃüÁîÊÇ²»ÄÑµÄ¡£
+ÊÖÍ·ÓĞ¸öÃüÁî¿ìËÙÑ°²é±íÊÇºÜ·½±ãµÄ£¬
+ÎÒÓÃµÄÊÇ~Hypertext Help with \LaTeX£¬ÍøÉÏ¿ÉÒÔËÑµ½£¬ÊÇÃâ·ÑµÄ¡£
+%%%%%%%%%% section %%%%%%%%%%
+\section{·ûºÅ¡¢×ÖÌå¡¢ÑÕÉ«µÈ}
+\begin{itemize}
+  \item ÌØÊâ×Ö·û£º\# \$ \% \^{} \& \_ \{ \} \~{} $\backslash \cdots$
+  \item ÖĞÎÄ×ÖÌå£º{\song ËÎÌå} {\kai ¿¬Ìå} {\hei ºÚÌå} {\fs ·ÂËÎ}
+  \item ×ÖÌå´óĞ¡£º{\tiny tiny} {\small small
+a76
+} {\normalsize normalsize}
+                  {\large large} {\Large Large} {\huge huge} {\Huge Huge}
+  \item ºº×Ö´óĞ¡£º{\wuhao ÎåºÅ} {\dawu ´óÎå} {\xiaosi Ğ¡ËÄ} {\sihao ËÄºÅ}
+                  {\xiaosan Ğ¡Èı} {\sanhao ÈıºÅ} {\xiaoer Ğ¡¶ş} {\erhao ¶şºÅ} {\yihao Ò»ºÅ}
+  \item ¸÷ÖÖÑÕÉ«£º{\color{red} ºìÉ«} {\color{yellow} »ÆÉ«} {\color{blue} À¶É«}
+                  {\color{magenta} Ñóºì} {\color{cyan} À¶ÂÌ}
+\end{itemize}
+%%%%%%%%%%% section %%%%%%%%%%
+\section{Í¼ĞÎ±í¸ñµÈ¸¡¶¯¶ÔÏó}
+
+\index{±´Ò¶Ë¹·½·¨}±´Ò¶Ë¹·½·¨~\cite{Gelman}~Ö÷ÒªÓÃÓÚĞ¡Ñù±¾Êı¾İ·ÖÎö£¬ËüÀûÓÃ²ÎÊıÏÈÑé·Ö²¼ºÍ
+ºóÑé·Ö²¼Ö®²îÒì½øĞĞÍ³¼ÆÍÆ¶Ï£¬ÆäÒ»°ã²½ÖèÊÇ£º
+\begin{enumerate}
+  \item ¹¹½¨¸ÅÂÊÄ£ĞÍ£¬°üÀ¨²ÎÊıµÄÏÈÑé·Ö²¼¡£
+  \item ¸ø¶¨¹Û²ìÊı¾İ£¬¼ÆËã²ÎÊıµÄºóÑé·Ö²¼¡£
+  \item ·ÖÎöÄ£ĞÍµÄĞ§¹û£¬ÈçÓĞ±ØÒª£¬»Øµ½µÚÒ»²½¡£
+\end{enumerate}
+ÏÂÃæ£¬ÎÒÃÇ¸øÒ»¸ö±í¸ñµÄÀı×Ó£º
+\begin{center}
+\begin{table}[!h]     % Ç¿ÖÆÔÚÔ­Î»ÏÔÊ¾±í¸ñ
+\centering
+\caption{¶şÎ¬Ëæ»úÏòÁ¿$(X,Y)$µÄ±ßÔµ·Ö²¼}
+\begin{tabular}{l|ccccc|c}
+  $_X$\hspace{3mm} $^Y$&$y_1$&$y_2$&$\cdots$&$y_j$&$\cdots$\\
+\hline
+$x_1$   &$p_{11}$&$p_{12}$&$\cdots$&$p_{1j}$&$\cdots$&$p_{1\cdot}$\\
+$x_2$   &$p_{21}$&$p_{22}$&$\cdots$&$p_{2j}$&$\cdots$&$p_{2\cdot}$\\
+$\vdots$&$\vdots$&$\vdots$&$\vdots$&$\vdots$&$\vdots$&$\vdots$ \\
+$x_i$   &$p_{i1}$&$p_{i2}$&$\cdots$&$p_{ij}$&$\cdots$&$p_{i\cdot}$\\
+$\vdots$&$\vdots$&$\vdots$&$\vdots$&$\vdots$&$\vdots$&$\vdots$ \\
+\hline
+   &$p_{\cdot 1}$&$p_{\cdot 2}$&$\cdots$&$p_{\cdot j}$&$\cdots$&1
+\label{marginal distribution}
+\end{tabular}
+\end{table}
+\end{center}
+ÔÚ±í~\ref{marginal distribution}ÖĞ£¬$p_{\cdot j}=\sum\limits_i p_{ij}$£¬ÀàËÆµØ£¬$ p_{i\cdot}=\sum\limits_j p_{ij}$¡£
+% ²åÈëÒ»¸öÍ¼Æ¬
+%\includegraphics[width=50mm,height=40mm]{figures/demo.eps}
+
+%%%%%%%%%% section %%%%%%%%%%
+\section{Éú³ÉË÷Òı}
+¼üÈëÃüÁî£ºmakeindex  ÎÄ¼şÃû¡£\newline
+\indent Æ©Èç¶ÔÕâ¸öÄ£°å£¬Éú³É~Template4CJK.ind~µÄ¹ı³ÌÈçÏÂ¡£
+\begin{lstlisting}
+$ makeindex Template4CJK
+This is makeindex, version 2.14 [02-Oct-2002] (kpathsea + Thai support).
+Scanning input file Template4CJK.idx....done (4 entries accepted, 0 rejected).
+Sorting entries....done (9 comparisons).
+Generating output file Template4CJK.ind....done (18 lines written, 0 warnings).
+Output written in Template4CJK.ind.
+Transcript written in Template4CJK.ilg.
+\end{lstlisting}
+
+\printindex % ´òÓ¡³öË÷ÒıÃû¼°ÆäËùÔÚÒ³Âë£¬¼´ÄÇĞ©\index{Ë÷ÒıÃû}
+%%%%%%%%%% ²Î¿¼ÎÄÏ× %%%%%%%%%%
+\begin{thebibliography}{}
+\bibitem[Gelman et~al., 2004]{Gelman} Gelman, A., Carlin, J.~B., Stern, H.~S.  \& Rubin, D.~B. (2004)
+Bayesian Data Analysis (Second Edition).  \newblock Chapman \& Hall/CRC.
+\end{thebibliography}
+\clearpage
+\end{document}
+%%%%%%%%%% ½áÊø %%%%%%%%%%
+
+
+0
+
